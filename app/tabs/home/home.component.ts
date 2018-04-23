@@ -4,7 +4,7 @@ import * as geolocation from "nativescript-geolocation";
 import { Accuracy } from "tns-core-modules/ui/enums";
 import * as application from "tns-core-modules/application";
 import { MainViewModel } from "../../lib/main-view-model";
- 
+import { LocationsService } from "../../lib/LocationsService"
 
 declare let android: any;
 declare let com: any;
@@ -16,11 +16,12 @@ declare let com: any;
 })
 export class HomeComponent implements OnInit {
     watchIds = [];
-
-    constructor(private model: MainViewModel) {
+    model;
+    constructor(private locationService: LocationsService) {
         /* ***********************************************************
         * Use the constructor to inject services.
         *************************************************************/
+        this.model = locationService.getLocations();
        console.dir(this.model);
     }
 
@@ -68,11 +69,14 @@ export class HomeComponent implements OnInit {
         })
             .then(function (loc) {
                 if (loc) {
-                   this.model.locations.push(loc);
+                //    this.model.locations.push(loc);
+                return loc             
                 }
             }, function (e) {
                 console.log("Error: " + (e.message || e));
             });
+
+            location.then(a => this.locationService.push(a));
     }
     
     buttonStartTap() {
@@ -80,7 +84,7 @@ export class HomeComponent implements OnInit {
             this.watchIds.push(geolocation.watchLocation(
                 function (loc) {
                     if (loc) {
-                        this.model.locations.push(loc);
+                        // this.model.locations.push(loc);
                     }
                 },
                 function (e) {
@@ -106,7 +110,7 @@ export class HomeComponent implements OnInit {
     }
     
     buttonClearTap() {
-        this.model.locations.splice(0, this.model.locations.length);
+        // this.model.locations.splice(0, this.model.locations.length);
     }
     
 }

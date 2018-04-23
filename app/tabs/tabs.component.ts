@@ -62,14 +62,4 @@ export class TabsComponent implements OnInit {
 
         this.title = selectedTabViewItem.title;
     }
-
-
-
-    startBackgroundTap() {
-        if (application.android) {
-            let context = utils.ad.getApplicationContext();
-            let intent = new android.content.Intent(context, com.services.BGService.class);
-            context.startService(intent);
-        }
-    }
 }

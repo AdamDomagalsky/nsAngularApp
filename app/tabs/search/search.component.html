@@ -5,4 +5,12 @@ Feel free to customize layouts and components to change how the tab view looks.
 <GridLayout class="page page-content">
     <Label class="page-icon fa" text="&#xf002;"></Label>
     <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+
+    <ListView [items]="items">
+        <ng-template let-item="item">
+            <StackLayout>
+                <Label [text]='item.latitude + "  | " +item.longitude +"  | "+item.timestamp'></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
 </GridLayout>
