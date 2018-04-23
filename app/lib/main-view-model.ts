@@ -1,7 +1,9 @@
 import * as geolocation from "nativescript-geolocation";
 import { Observable } from "data/observable";
 import { ObservableArray } from "data/observable-array";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class MainViewModel extends Observable {
     private _locations: ObservableArray<geolocation.Location>;
 

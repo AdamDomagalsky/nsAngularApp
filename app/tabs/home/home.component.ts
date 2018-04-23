@@ -16,13 +16,11 @@ declare let com: any;
 })
 export class HomeComponent implements OnInit {
     watchIds = [];
-    model: MainViewModel;
 
-    constructor() {
+    constructor(private model: MainViewModel) {
         /* ***********************************************************
         * Use the constructor to inject services.
         *************************************************************/
-       this.model = new MainViewModel();
        console.dir(this.model);
     }
 
@@ -36,7 +34,7 @@ export class HomeComponent implements OnInit {
     startBackgroundTap() {
         if (application.android) {
             let context = utils.ad.getApplicationContext();
-            let intent = new android.content.Intent(context, com.nativescript.location.BackgroundService.class);
+            let intent = new android.content.Intent(context, com.services.BGService.class);
             context.startService(intent);
         }
     }
@@ -44,7 +42,7 @@ export class HomeComponent implements OnInit {
     stopBackgroundTap() {
         if (application.android) {
             let context = utils.ad.getApplicationContext();
-            let intent = new android.content.Intent(context, com.nativescript.location.BackgroundService.class);
+            let intent = new android.content.Intent(context, com.services.BGService.class);
             context.stopService(intent);
         }
     }

@@ -7,7 +7,7 @@ import { SearchComponent } from "./search/search.component";
 import { TabsRoutingModule } from "./tabs-routing.module";
 import { TabsComponent } from "./tabs.component";
 import { BGService } from "../lib/BGService";
-
+import {MainViewModel} from "../lib/main-view-model"
 @NgModule({
     imports: [
         NativeScriptCommonModule,
@@ -19,7 +19,7 @@ import { BGService } from "../lib/BGService";
         BrowseComponent,
         SearchComponent
     ],
-    providers: [BGService],
+    providers: [BGService, MainViewModel],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
