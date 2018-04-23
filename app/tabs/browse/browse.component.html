@@ -1,0 +1,16 @@
+<!--
+This is the component view that represents the 'Browse' tab.
+Feel free to customize layouts and components to change how the tab view looks.
+-->
+<GridLayout class="page page-content">
+    <Label class="page-icon fa" text="&#xf1ea;"></Label>
+    <Label class="page-placeholder" text="<!-- Haloo content goes here -->"></Label>
+</GridLayout>
+
+<ListView [items]="locations" class="list-group">
+        <ng-template let-country="item" let-i="index" let-odd="odd" let-even="even">
+            <GridLayout class="list-group-item">
+                <Label [text]="locations"></Label>
+            </GridLayout>
+        </ng-template>
+    </ListView>    
