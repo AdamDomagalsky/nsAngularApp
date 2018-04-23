@@ -5,7 +5,6 @@ npm-debug.log
 *.metadata.json
 npm-debug.log
 hooks/
-lib/
 node_modules/
 platforms/
 tmp/
